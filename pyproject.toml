@@ -7,7 +7,7 @@ requires-python = ">=3.9,<3.13"
 # version = "0.0.1"
 dynamic = ["version"]
 authors = [{ name = "IBM" }]
-description = "Public notebooks and utilities for TSFM"
+description = "Barebones TSFM"
 readme = "README.md"
 license = { file = "LICENSE" }
 classifiers = [
@@ -26,37 +26,8 @@ dependencies = [
 ]
 
 [tool.setuptools]
-packages = ["tsfm_public", "tsfmhfdemos"]
+packages = ["tsfm_public"]
 
-[project.optional-dependencies]
-
-
-all = ["tsfm_public[notebooks,testing,dev]"]
-
-notebooks = [
-    "jupyter",
-    "matplotlib",
-    "datasets",
-    "ipywidgets",
-    "plotly",
-    "kaleido",
-    "tensorboard",
-]
-testing = ["pytest", "tsfm_public[notebooks]", "parameterized"]
-dev = ["pre-commit", "tsfm_public[testing]", "ruff==0.4.4"]
-
-# ogv deployments will already have jupyter
-# and we don't want to mess with RH's tested version
-ogv = ["datasets", "plotly", "kaleido"]
-demos = [
-    "tsfm_public[notebooks]",
-    "streamlit",
-    "altair<5",
-    "plotly",
-    "streamlit-aggrid",
-    "kaleido",
-    "toml",
-]
 # ###################################################
 
 
@@ -69,7 +40,6 @@ line-length = 119
 lint.ignore = ["C901", "E501", "E741", "F402", "F823"]
 lint.select = ["C", "E", "F", "I", "W"]
 extend-exclude = ["tsfm_public/_version.py"]
-extend-include = ["*.ipynb"]
 
 # Ignore import violations in all `__init__.py` files.
 [tool.ruff.lint.per-file-ignores]
